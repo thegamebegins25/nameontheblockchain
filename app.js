@@ -11,10 +11,11 @@ sendEthButton.addEventListener('click', () => {
     gas: '0x2710', // customizable by user during MetaMask confirmation.
     to: '0x61a80784e389563cdc1027012d4D5d7b83Defc5e', // Required except during contract publications.
     from: ethereum.selectedAddress, // must match user's active address.
-    value: '0x01', // Only required to send ether to the recipient from the initiating external account.
+    value: '0xDE0B6B3A7640000', // Only required to send ether to the recipient from the initiating external account.
     //data:
       //'', // Optional, but used for defining smart contract creation and interaction.
-  };
+      chainId: '0x13881',
+    };
   ethereum
     .request({
       method: 'eth_sendTransaction',
