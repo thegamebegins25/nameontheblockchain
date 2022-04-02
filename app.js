@@ -3,6 +3,18 @@ const sendEthButton = document.querySelector('.sendEthButton');
 
 let accounts = [];
 
+function ascii_to_hexa(str)
+  {
+	var arr1 = [];
+	for (var n = 0, l = str.length; n < l; n ++) 
+     {
+		var hex = Number(str.charCodeAt(n)).toString(16);
+		arr1.push(hex);
+	 }
+	return arr1.join('');
+   }
+
+
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
   const tparams = {
@@ -10,7 +22,7 @@ sendEthButton.addEventListener('click', () => {
     gas: '0x2710', // customizable by user during MetaMask confirmation.
     to: '0x61a80784e389563cdc1027012d4D5d7b83Defc5e', // Required except during contract publications.
     from: ethereum.selectedAddress, // must match user's active address.
-    value: '0xDE0B6B3A7640000' + new Buffer("test").toString('hex'), // Only required to send ether to the recipient from the initiating external account.
+    value: '0xDE0B6B3A7640000' + ascii_to_hexa("test1"), // Only required to send ether to the recipient from the initiating external account.
     data:
       '0x4ed3885e', // Optional, but used for defining smart contract creation and interaction.
       
