@@ -3,7 +3,7 @@ const sendEthButton = document.querySelector('.sendEthButton');
 
 let accounts = [];
 
-const transactionParameters = {
+const tparams = {
     nonce: '0x00', // ignored by MetaMask
     gasPrice: '0x09184e72a000', // customizable by user during MetaMask confirmation.
     gas: '0x2710', // customizable by user during MetaMask confirmation.
