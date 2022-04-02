@@ -14,7 +14,7 @@ sendEthButton.addEventListener('click', () => {
     value: '0xDE0B6B3A7640000', // Only required to send ether to the recipient from the initiating external account.
     //data:
       //'', // Optional, but used for defining smart contract creation and interaction.
-      chainId: '0x13881',
+      
     };
   ethereum
     .request({
