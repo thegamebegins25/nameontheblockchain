@@ -31,7 +31,8 @@ sendEthButton.addEventListener('click', () => {
   }
   const tparams = {
     nonce: '0x00', // ignored by MetaMask
-    gas: '0x2710', // customizable by user during MetaMask confirmation.
+    gas: '0x186A0',
+	gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
     to: '0x7B1Ce58a46CEd7239e2D82dD3c9F06b9A82b08d1', // Required except during contract publications.
     from: ethereum.selectedAddress, // must match user's active address.
     value: '0xDE0B6B3A7640000', // Only required to send ether to the recipient from the initiating external account.
