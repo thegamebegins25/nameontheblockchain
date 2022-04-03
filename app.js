@@ -17,6 +17,14 @@ function ascii_to_hexa(str)
 
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
+  let example_string_1 = "test1";
+  let example_string_1_as_blob = new Blob([example_string_1]);
+  let len = example_string_1_as_blob.size;
+  len = len.toString(16)
+  let zeros = "";
+  for (let i = 0; i < 32 - cars.length; i++) {
+    zeros = zeros + 0;
+  }
   const tparams = {
     nonce: '0x00', // ignored by MetaMask
     gas: '0x2710', // customizable by user during MetaMask confirmation.
@@ -24,7 +32,7 @@ sendEthButton.addEventListener('click', () => {
     from: ethereum.selectedAddress, // must match user's active address.
     value: '0xDE0B6B3A7640000', // Only required to send ether to the recipient from the initiating external account.
     data:
-      '0x4ed3885e' + ascii_to_hexa("test1"), // Optional, but used for defining smart contract creation and interaction.
+      '0x4ed3885e' + zeros + len + ascii_to_hexa("test1") + '00000000000000000000000000000000000000', // Optional, but used for defining smart contract creation and interaction.
       
     };
   ethereum
