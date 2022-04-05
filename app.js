@@ -1,5 +1,13 @@
 const ethereumButton = document.querySelector('.enableEthereumButton');
 const sendEthButton = document.querySelector('.sendEthButton');
+const vname = document.getElementById('visualname');
+const vaddr = document.getElementById('visualaddr');
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+let name = params['name'];
+console.log(name);
+vname.textContent = 'Name to eternalize: "' + name + '"';
 
 let accounts = [];
 
@@ -17,7 +25,7 @@ function ascii_to_hexa(str)
 
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
-  let hexa = ascii_to_hexa("blank")
+  let hexa = ascii_to_hexa(name);
   let example_string_1_as_blob = new Blob([hexa]);
   let len = example_string_1_as_blob.size;
   len = len.toString(16)
@@ -55,4 +63,5 @@ ethereumButton.addEventListener('click', () => {
 
 async function getAccount() {
   accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  vaddr.textContent = 'Address: "' + accounts[0] + '"';
 }
