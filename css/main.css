@@ -1,0 +1,41 @@
+header.pageheader {
+    background:rgb(72, 196, 218);
+    height: 500;
+    color: rgb(60, 60, 255);
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-bottom: 1%;
+}
+
+.ht {
+    text-align: center;
+    margin-top: 0;
+    font-size: 100px;
+}
+
+.ebutton {
+    text-align: center;
+}
+
+.input {
+    line-height: 30px;
+    font-size: 30PX;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+body {
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+button {
+    background-color: rgb(126, 126, 126); /* Green */
+    border: 10;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2%;
+    font-size: 16px;
+  }
