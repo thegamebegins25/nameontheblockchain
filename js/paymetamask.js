@@ -60,6 +60,9 @@ function pay() {
 };
 
 async function getAccount() {
+  if (ethereum.chainId !== "0x13881") {
+    alert("Please set the blockchain to Polygon Mumbai to process this transaction. If you don't know how to do this, please use the PayPal option.");
+  };
   accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   vaddr.textContent = 'Address: "' + accounts[0] + '"';
 }
