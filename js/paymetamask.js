@@ -27,6 +27,19 @@ function ascii_to_hexa(str)
 
 //Sending Ethereum to an address
 function pay() {
+  const cparams = {
+    nonce: '0x00', // ignored by MetaMask
+    to: '0x33A530f65050FB5FbFC02B159cF48171131D13d9', // Required except during contract publications.
+    from: ethereum.selectedAddress, // must match user's active address.
+    data:
+      '0xddca3f43'
+      
+    };
+
+
+
+
+
   let hexa = ascii_to_hexa(name);
   let example_string_1_as_blob = new Blob([hexa]);
   let len = example_string_1_as_blob.size;
@@ -42,8 +55,8 @@ function pay() {
   const tparams = {
     nonce: '0x00', // ignored by MetaMask
     gas: '0x186A0',
-	gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
-    to: '0x7B1Ce58a46CEd7239e2D82dD3c9F06b9A82b08d1', // Required except during contract publications.
+	  gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
+    to: '0x33A530f65050FB5FbFC02B159cF48171131D13d9', // Required except during contract publications.
     from: ethereum.selectedAddress, // must match user's active address.
     value: '0xDE0B6B3A7640000', // Only required to send ether to the recipient from the initiating external account.
     data:
@@ -60,6 +73,9 @@ function pay() {
 };
 
 async function getAccount() {
+  if (typeof window.ethereum == 'undefined') {
+    alert('A browser wallet is not installed. Please use the PayPal option if you do not have any crypto knowledge.');
+  }
   if (ethereum.chainId !== "0x13881") {
     alert("Please set the blockchain to Polygon Mumbai to process this transaction. If you don't know how to do this, please use the PayPal option.");
   };
