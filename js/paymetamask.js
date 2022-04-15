@@ -24,20 +24,30 @@ function ascii_to_hexa(str)
 	return arr1.join('');
      }
 
+const h2d = hex => parseInt(hex, 16);
+
 
 //Sending Ethereum to an address
 function pay() {
-    const cparams = {
-        nonce: '0x00', // ignored by MetaMask
+    const cparams = [{
         to: '0x33A530f65050FB5FbFC02B159cF48171131D13d9', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         data:
             '0xddca3f43'
             
-        };
+        }];
 
-
-
+	ethereum
+	    .request({
+	      method: 'eth_call',
+	      params: cparams,
+	    })
+	    .then((txHash) => {
+	      console.log(txHash);
+	    })
+	let slicedfee = txHash.slice(0, 5);
+	let fee = h2d(fee);
+	console.log(fee);
 
 
     let hexa = ascii_to_hexa(name);
