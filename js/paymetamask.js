@@ -30,7 +30,7 @@ const h2d = hex => parseInt(hex, 16);
 //Sending Ethereum to an address
 function pay() {
     const cparams = [{
-        to: '0x33A530f65050FB5FbFC02B159cF48171131D13d9', // Required except during contract publications.
+        to: '0xc9e4f8ECa67b6837003F27E0922cc698b55DfAd0', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         data:
             '0xddca3f43'
@@ -64,7 +64,7 @@ function pay() {
         nonce: '0x00', // ignored by MetaMask
         gas: '0x186A0',
 	    gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
-        to: '0x33A530f65050FB5FbFC02B159cF48171131D13d9', // Required except during contract publications.
+        to: '0xc9e4f8ECa67b6837003F27E0922cc698b55DfAd0', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
         data:
@@ -76,8 +76,10 @@ function pay() {
             method: 'eth_sendTransaction',
             params: [tparams],
         })
-        .then((txHash) => console.log(txHash))
+        .then((txHash) => window.tx = txHash)
         .catch((error) => console.error);
+    let link = "thanks.html?tx=" + window.tx + '&name=' + name
+    window.open(link);
 };
 
 async function getAccount() {

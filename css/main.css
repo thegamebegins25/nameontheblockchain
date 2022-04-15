@@ -1,7 +1,8 @@
 header.pageheader {
-    background:rgb(72, 196, 218);
+    background-color: #e7e7e7;
+    
     height: 500;
-    color: rgb(60, 60, 255);
+    color: rgb(63, 138, 168);
     padding-top: 10%;
     padding-bottom: 10%;
     margin-bottom: 1%;
@@ -28,7 +29,17 @@ header.pageheader {
     font-size: 40px;
 }
 
-.buybuttons {
+.left {
+    float: left;
+}
+
+.right {
+    float: center;
+    margin-left: 5%;
+}
+
+
+.fullcenter {
     text-align: center;
     position: absolute;
     top: 50%;
@@ -36,11 +47,40 @@ header.pageheader {
     transform: translateX(-50%) translateY(-50%);
 }
 
+.explorergif {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #000000;
+}
+
+.card {
+    width: fit-content;
+    border: 5px solid #000000;
+    background-color: #f8f8f8;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.center {
+    text-align: center;
+}
+
 .input {
     line-height: 30px;
     font-size: 30PX;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.link {
+    color: blue;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: rgb(0, 0, 0);
 }
 
 body {
@@ -58,3 +98,7 @@ button {
     border-radius: 2%;
     font-size: 16px;
   }
+
+.mmbutton {
+    font-size: 40px;
+}
