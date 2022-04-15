@@ -43,12 +43,10 @@ function pay() {
 	      params: cparams,
 	    })
 	    .then((txHash) => {
-	      console.log(txHash);
+		  window.fee = txHash
 	    })
-	let slicedfee = txHash.slice(0, 5);
-	let fee = h2d(fee);
-	console.log(fee);
 
+	console.log(window.fee);
 
     let hexa = ascii_to_hexa(name);
     let example_string_1_as_blob = new Blob([hexa]);
@@ -68,7 +66,7 @@ function pay() {
 	    gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
         to: '0x33A530f65050FB5FbFC02B159cF48171131D13d9', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
-        value: '0xDE0B6B3A7640000', // Only required to send ether to the recipient from the initiating external account.
+        value: window.fee, // Only required to send ether to the recipient from the initiating external account.
         data:
             '0x4ed3885e' + '00000000000000000000000000000000000000000000000000000000000000200' + zeros + len + zeros2, // Optional, but used for defining smart contract creation and interaction.
             
