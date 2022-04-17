@@ -30,7 +30,7 @@ const h2d = hex => parseInt(hex, 16);
 //Sending Ethereum to an address
 function pay() {
     const cparams = [{
-        to: '0x1b72f97D88A5eC82c50e8026324872c2a97b66c2', // Required except during contract publications.
+        to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         data:
             '0xddca3f43'
@@ -47,24 +47,24 @@ function pay() {
 	    })
 
 	console.log(window.fee);
-
+	
+	let len = new Blob([name]).size;
     let hexa = ascii_to_hexa(name);
-    let example_string_1_as_blob = new Blob([hexa]);
-    let len = example_string_1_as_blob.size;
+	console.log(len);
     len = len.toString(16)
     let zeros = "";
     for (let i = 0; i < 63 - len.length; i++) {
         zeros = zeros + 0;
     }
     let zeros2 = hexa;
-    for (let i = 0; i < 64 - hexa.length; i++) {
+    for (let i = 0; i < 64 - hexa.length % 64; i++) {
         zeros2 = zeros2 + 0;
     }
     const tparams = {
         nonce: '0x00', // ignored by MetaMask
         gas: '0x186A0',
 	    gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
-        to: '0x1b72f97D88A5eC82c50e8026324872c2a97b66c2', // Required except during contract publications.
+        to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
         data:
