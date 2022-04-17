@@ -1,5 +1,7 @@
 const vname = document.getElementById('visualname');
 const vaddr = document.getElementById('visualaddr');
+const paybutton = document.getElementById('pay');
+paybutton.style.display = 'none';
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
@@ -29,24 +31,7 @@ const h2d = hex => parseInt(hex, 16);
 
 //Sending Ethereum to an address
 function pay() {
-    const cparams = [{
-        to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
-        from: ethereum.selectedAddress, // must match user's active address.
-        data:
-            '0xddca3f43'
-            
-        }];
 
-	ethereum
-	    .request({
-	      method: 'eth_call',
-	      params: cparams,
-	    })
-	    .then((txHash) => {
-			  window.fee = txHash
-	    })
-
-	console.log(window.fee);
 	
 	let len = new Blob([name]).size;
     let hexa = ascii_to_hexa(name);
@@ -85,6 +70,7 @@ function pay() {
 };
 
 async function getAccount() {
+
     if (typeof window.ethereum == 'undefined') {
         alert('A browser wallet is not installed. Please use the PayPal option if you do not have any crypto knowledge.');
     }
@@ -93,4 +79,24 @@ async function getAccount() {
     };
     accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     vaddr.textContent = 'Address: "' + accounts[0] + '"';
+	const cparams = [{
+        to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
+        from: ethereum.selectedAddress, // must match user's active address.
+        data:
+            '0xddca3f43'
+            
+        }];
+
+	ethereum
+	    .request({
+	      method: 'eth_call',
+	      params: cparams,
+	    })
+	    .then((txHash) => {
+			  window.fee = txHash
+	    })
+
+	console.log(window.fee);
+    paybutton.style.display = 'inline-block';
+    
 }
