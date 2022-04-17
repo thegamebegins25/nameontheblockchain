@@ -43,7 +43,7 @@ function pay() {
 	      params: cparams,
 	    })
 	    .then((txHash) => {
-		  window.fee = txHash
+			  window.fee = txHash
 	    })
 
 	console.log(window.fee);
@@ -62,8 +62,8 @@ function pay() {
     }
     const tparams = {
         nonce: '0x00', // ignored by MetaMask
-        gas: '0x186A0',
-	    gasPrice: '4A817C800',// customizable by user during MetaMask confirmation.
+        gas: '0xF4240',
+	    gasPrice: '0xBA43B7400',// customizable by user during MetaMask confirmation.
         to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
