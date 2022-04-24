@@ -47,6 +47,9 @@ header.pageheader {
     color: #4d4d4d;
 }
 
+.wrap {
+    word-wrap: break-word; 
+}
 
 .fullcenter {
     text-align: center;

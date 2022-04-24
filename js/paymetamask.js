@@ -49,7 +49,7 @@ function pay() {
         nonce: '0x00', // ignored by MetaMask
         gas: '0xF4240',
 	    gasPrice: '0xBA43B7400',// customizable by user during MetaMask confirmation.
-        to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
+        to: '0xF39461721309B281d82294D89a101c9117737409', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
         data:
@@ -80,7 +80,7 @@ async function getAccount() {
     accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     vaddr.textContent = 'Address: "' + accounts[0] + '"';
 	const cparams = [{
-        to: '0xA447973732B73826311a61f7E0fe06c3AfAA2A84', // Required except during contract publications.
+        to: '0xF39461721309B281d82294D89a101c9117737409', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         data:
             '0xddca3f43'
