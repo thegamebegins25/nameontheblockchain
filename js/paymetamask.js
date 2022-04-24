@@ -96,7 +96,12 @@ async function getAccount() {
 			  window.fee = txHash
 	    })
 
-	console.log(window.fee);
-    paybutton.style.display = 'inline-block';
+
+    // 1 second delay
+    setTimeout(function(){
+        console.log(window.fee);
+        paybutton.style.display = 'inline-block';
+    }, 1000);
+
     
 }
