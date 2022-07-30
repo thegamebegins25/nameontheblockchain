@@ -7,7 +7,74 @@
 <body>
     <h1 class="center">Pay with PayPal</h1>
     <h2 class="center" id="name"></h2>
-    <h1 class="center checkout" onclick="checkout();">Checkout (not finished)</h1>
+    <h2 id="thx" style="display: none; text-align: center;">Thank you for buying a Name in the Blockchain! We will email you your transaction once it is complete. This will take up to 2 days.</h2>
+    <div id="paypal-button-container" class="paypal"></div>
+    <!-- Sample PayPal credentials (client-id) are included -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AeBVN6J1TEFhrD5UTcRktuITa9tQLfPNLGK5VekTGTefBDbVHTtJC2VWHQUVzj6VNfDADk6YYRrU98y0&currency=USD&intent=capture"></script>
+    <script>
+        const paypalButtonsComponent = paypal.Buttons({
+            // optional styling for buttons
+            // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+            style: {
+            color: "gold",
+            shape: "rect",
+            layout: "vertical"
+            },
+
+            // set up the transaction
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    "purchase_units": [{
+                        "amount": {
+                        "currency_code": "USD",
+                        "value": "1.00",
+                        "breakdown": {
+                            "item_total": {  /* Required when including the `items` array */
+                            "currency_code": "USD",
+                            "value": "1.00"
+                            }
+                        }
+                        },
+                        "items": [
+                        {
+                            "name": window.name, /* Shows within upper-right dropdown during payment approval */
+                            "description": "Name in the Blockchain", /* Item details will also be in the completed paypal.com transaction view */
+                            "unit_amount": {
+                            "currency_code": "USD",
+                            "value": "1.00"
+                            },
+                            "quantity": "1"
+                        },
+                        ]
+                    }],
+                });
+                },
+
+
+            // finalize the transaction
+            onApprove: (data, actions) => {
+                const captureOrderHandler = (details) => {
+                    const payerName = details.payer.name.given_name;
+                    console.log('Transaction completed');
+                    document.getElementById('thx').style.display = "block";
+                    document.getElementById('paypal-button-container').style.display = "none";
+                };
+
+                return actions.order.capture().then(captureOrderHandler);
+            },
+
+            // handle unrecoverable errors
+            onError: (err) => {
+                console.error('An error prevented the buyer from checking out with PayPal');
+            }
+        });
+
+        paypalButtonsComponent
+            .render("#paypal-button-container")
+            .catch((err) => {
+                console.error('PayPal Buttons failed to render');
+            });
+    </script>
 
     <script src="js/paypaypal.js"></script>
 </body>

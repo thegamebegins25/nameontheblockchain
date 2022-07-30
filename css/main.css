@@ -13,6 +13,10 @@ header.pageheader {
     font-size: 50px;
 }
 
+.paypal {
+    text-align: center;
+}
+
 .ht {
     text-align: center;
     margin-top: 0;
