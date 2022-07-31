@@ -4,7 +4,7 @@ var tx = params['tx'];
 var name = params['name'];
 
 function explorer() {
-    let link = "https://mumbai.polygonscan.com/tx/" + tx
+    let link = "https://polygonscan.com/tx/" + tx
     console.log(link);
     window.open(link, '_blank');
 };

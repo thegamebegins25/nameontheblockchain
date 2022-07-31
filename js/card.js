@@ -11,7 +11,7 @@ console.log(nametext);
 name.textContent = "My name is: " + nametext;
 tx.textContent = 'Transaction Hash: "' + txtext + '"'
 
-let link = "https://mumbai.polygonscan.com/tx/" + txtext
+let link = "https://polygonscan.com/tx/" + txtext
 new QRCode(document.getElementById("qrcode"), {
 	text: link,
 });
