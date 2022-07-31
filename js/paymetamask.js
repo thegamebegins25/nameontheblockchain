@@ -49,7 +49,7 @@ function pay() {
         nonce: '0x00', // ignored by MetaMask
         gas: '0xF4240',
 	    gasPrice: '0xBA43B7400',// customizable by user during MetaMask confirmation.
-        to: '0xD87808Bb19f914C1ae9a5d2F2872b47561597e05', // Required except during contract publications.
+        to: '0x5A8FDD15edBBE6A53722F536B7c7C9209d0aA2C9', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
         data:
@@ -74,13 +74,13 @@ async function getAccount() {
     if (typeof window.ethereum == 'undefined') {
         alert('A browser wallet is not installed. Please use the PayPal option if you do not have any crypto knowledge.');
     }
-    if (ethereum.chainId !== "0x13881") {
-        alert("Please set the blockchain to Polygon Mumbai to process this transaction. If you don't know how to do this, please use the PayPal option.");
+    if (ethereum.chainId !== "0x89") {
+        alert("Please set the blockchain to Polygon to process this transaction. If you don't know how to do this, please use the PayPal option.");
     };
     accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     vaddr.textContent = 'Address: "' + accounts[0] + '"';
 	const cparams = [{
-        to: '0xD87808Bb19f914C1ae9a5d2F2872b47561597e05', // Required except during contract publications.
+        to: '0x5A8FDD15edBBE6A53722F536B7c7C9209d0aA2C9', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         data:
             '0xddca3f43'
