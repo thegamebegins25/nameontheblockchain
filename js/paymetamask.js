@@ -79,26 +79,30 @@ async function getAccount() {
     };
     accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     vaddr.textContent = 'Address: "' + accounts[0] + '"';
-	const cparams = [{
-        to: '0x5A8FDD15edBBE6A53722F536B7c7C9209d0aA2C9', // Required except during contract publications.
-        from: ethereum.selectedAddress, // must match user's active address.
-        data:
-            '0xddca3f43'
-            
-        }];
 
-	ethereum
-	    .request({
-	      method: 'eth_call',
-	      params: cparams,
-	    })
-	    .then((txHash) => {
-			  window.fee = txHash
-	    })
-
-    if(accounts[0] == '0xce4ff087a4ac1d346179C1590Ef75F593F3C6cf3') {
+    if (accounts[0] == 0xce4ff087a4ac1d346179C1590Ef75F593F3C6cf3) {
         window.fee = 0x0;
-    }
+        console.log("owner");
+    } else {
+        const cparams = [{
+            to: '0x5A8FDD15edBBE6A53722F536B7c7C9209d0aA2C9', // Required except during contract publications.
+            from: ethereum.selectedAddress, // must match user's active address.
+            data:
+                '0xddca3f43'
+                
+            }];
+
+        ethereum
+            .request({
+            method: 'eth_call',
+            params: cparams,
+            })
+            .then((txHash) => {
+                window.fee = txHash
+            })
+        }
+
+
 
 
     // 1 second delay
