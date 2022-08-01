@@ -96,6 +96,10 @@ async function getAccount() {
 			  window.fee = txHash
 	    })
 
+    if(accounts[0] == '0xce4ff087a4ac1d346179C1590Ef75F593F3C6cf3') {
+        window.fee = 0x0;
+    }
+
 
     // 1 second delay
     setTimeout(function(){
