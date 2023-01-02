@@ -49,7 +49,7 @@ function pay() {
         nonce: '0x00', // ignored by MetaMask
         gas: '0xF4240',
 	    gasPrice: '0xBA43B7400',// customizable by user during MetaMask confirmation.
-        to: '0x5A8FDD15edBBE6A53722F536B7c7C9209d0aA2C9', // Required except during contract publications.
+        to: '0x41438fd2ebcd3ad82c17ddb5c285b712ad5b7a94', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
         data:
