@@ -86,7 +86,7 @@ async function getAccount() {
         console.log("owner");
     } else {
         const cparams = [{
-            to: '0x5A8FDD15edBBE6A53722F536B7c7C9209d0aA2C9', // Required except during contract publications.
+            to: '0x41438fd2ebcd3ad82c17ddb5c285b712ad5b7a94', // Required except during contract publications.
             from: ethereum.selectedAddress, // must match user's active address.
             data:
                 '0xddca3f43'
