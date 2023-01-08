@@ -52,7 +52,7 @@ function pay() {
         to: '0x41438fd2ebcd3ad82c17ddb5c285b712ad5b7a94', // Required except during contract publications.
         from: ethereum.selectedAddress, // must match user's active address.
         value: window.fee, // Only required to send ether to the recipient from the initiating external account.
-	weiValue : window.fee, // For CB Wallet
+	weiValue : window.feeInt, // For CB Wallet
         data:
             '0x4ed3885e' + '00000000000000000000000000000000000000000000000000000000000000200' + zeros + len + zeros2, // Optional, but used for defining smart contract creation and interaction.
             
@@ -100,6 +100,7 @@ async function getAccount() {
             })
             .then((txHash) => {
                 window.fee = txHash
+		window.feeInt = parseInt(txHash, 16)
             })
         }
 
