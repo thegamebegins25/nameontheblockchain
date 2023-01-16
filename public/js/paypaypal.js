@@ -12,6 +12,15 @@ namehtml.textContent = text;
 
 function pay() {
     if (emailbox.value.includes("@") && emailbox.value.includes(".")) {
+        emailbox.style.display = "none";
+        emailbutton.style.display = "none";
+        const customid = emailbox.value + "~" + Math.floor(Math.random() * 1000000000000000);
+        url = "https://us-east1-nitbc-374322.cloudfunctions.net/nitbc" + "?name=" + window.name + "&email=" + emailbox.value + "&id=" + customid;
+        let xmlHttpReq = new XMLHttpRequest();
+        xmlHttpReq.open("GET", url, false); 
+        xmlHttpReq.send(null);
+        console.log(xmlHttpReq.responseText);
+        console.log(xmlHttpReq.status);
 
         const paypalButtonsComponent = paypal.Buttons({
             // optional styling for buttons
@@ -26,6 +35,7 @@ function pay() {
             createOrder: (data, actions) => {
                 return actions.order.create({
                     "purchase_units": [{
+                        "custom_id": customid,
                         "amount": {
                         "currency_code": "USD",
                         "value": "3.00",
@@ -55,13 +65,6 @@ function pay() {
             // finalize the transaction
             onApprove: (data, actions) => {
                 const captureOrderHandler = (details) => {
-                    const payerName = details.payer.name.given_name;
-                    const id = details.id;
-                    url = "https://us-east1-nitbc-374322.cloudfunctions.net/nitbc" + "?name=" + window.name + "&email=" + emailbox.value + "&id=" + id;
-                    let xmlHttpReq = new XMLHttpRequest();
-                    xmlHttpReq.open("GET", url, false); 
-                    xmlHttpReq.send(null);
-                    console.log(xmlHttpReq.responseText);
                     console.log('Transaction completed');
                     document.getElementById('thx').style.display = "block";
                     document.getElementById('paypal-button-container').style.display = "none";
@@ -82,7 +85,6 @@ function pay() {
             .catch((err) => {
                 console.error('PayPal Buttons failed to render');
         });
-        emailbox.style.display = "none";
-        emailbutton.style.display = "none";
+
     }
 }
