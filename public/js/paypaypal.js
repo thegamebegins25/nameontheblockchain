@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!--
-        add favicon here:
-        
-        <link rel="shortcut icon" href="static/img/metamasklogo.png"/>
-    -->
-    <link rel="stylesheet" href="css/main.css"/>
-    <title>Pay with Paypal</title>
-</head>
-<body>
-    <h1 class="center">Pay with PayPal</h1>
-    <h2 class="center" id="name"></h2>
-    <h2 id="thx" style="display: none; text-align: center;">Thank you for buying a Name in the Blockchain! We will email you your transaction once it is complete. This will take up to 2 days.</h2>
-    <div id="paypal-button-container" class="paypal"></div>
-    <!-- Sample PayPal credentials (client-id) are included -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AeBVN6J1TEFhrD5UTcRktuITa9tQLfPNLGK5VekTGTefBDbVHTtJC2VWHQUVzj6VNfDADk6YYRrU98y0&currency=USD&intent=capture"></script>
-    <script>
+const urlSearchParams = new URLSearchParams(window.location.search);
+const emailbox = document.getElementById('email');
+const emailbutton = document.getElementById('emailbutton');
+const params = Object.fromEntries(urlSearchParams.entries());
+window.name = params['name'];
+
+const namehtml = document.getElementById('name');
+
+
+let text = "Confirm your name: " + window.name;
+namehtml.textContent = text;
+
+function pay() {
+    if (emailbox.value.includes("@") && emailbox.value.includes(".")) {
+
         const paypalButtonsComponent = paypal.Buttons({
             // optional styling for buttons
             // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
@@ -25,7 +21,7 @@
             shape: "rect",
             layout: "vertical"
             },
-
+        
             // set up the transaction
             createOrder: (data, actions) => {
                 return actions.order.create({
@@ -54,33 +50,39 @@
                     }],
                 });
                 },
-
-
+        
+        
             // finalize the transaction
             onApprove: (data, actions) => {
                 const captureOrderHandler = (details) => {
                     const payerName = details.payer.name.given_name;
+                    const id = details.id;
+                    url = "https://us-east1-nitbc-374322.cloudfunctions.net/nitbc" + "?name=" + window.name + "&email=" + emailbox.value + "&id=" + id;
+                    let xmlHttpReq = new XMLHttpRequest();
+                    xmlHttpReq.open("GET", url, false); 
+                    xmlHttpReq.send(null);
+                    console.log(xmlHttpReq.responseText);
                     console.log('Transaction completed');
                     document.getElementById('thx').style.display = "block";
                     document.getElementById('paypal-button-container').style.display = "none";
                 };
-
+        
                 return actions.order.capture().then(captureOrderHandler);
             },
-
+        
             // handle unrecoverable errors
             onError: (err) => {
                 console.error('An error prevented the buyer from checking out with PayPal');
             }
         });
-
+    
+    
         paypalButtonsComponent
             .render("#paypal-button-container")
             .catch((err) => {
                 console.error('PayPal Buttons failed to render');
-            });
-    </script>
-
-    <script src="js/paypaypal.js"></script>
-</body>
-</html>
+        });
+        emailbox.style.display = "none";
+        emailbutton.style.display = "none";
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        add favicon here:
+        
+        <link rel="shortcut icon" href="static/img/metamasklogo.png"/>
+    -->
+    <link rel="stylesheet" href="css/main.css"/>
+    <title>Pay with Paypal</title>
+</head>
+<body>
+    <h1 class="center">Pay with PayPal</h1>
+    <h2 class="center" id="name"></h2>
+    <input type="email" id="email" placeholder="Email" class="center" style="width: 50%; margin: 0 auto; display: block; margin-bottom: 20px;"/>
+    <button onclick="pay();" id="emailbutton" class="center" style="width: 50%; margin: 0 auto; display: block; margin-bottom: 20px;">Pay</button>
+    <p>By entering your email and clicking "Pay" you consent to receiving marketing and/or transactional emails. You may unsubscribe at any time. If you do not enter your email, then you will not get a confirmation email and will not be able to view your name.</p>
+    <h2 id="thx" style="display: none; text-align: center;">Thank you for buying a Name in the Blockchain! We will email you your transaction once it is complete. This will take up to 2 days.</h2>
+    <div id="paypal-button-container" class="paypal"></div>
+    <!-- Sample PayPal credentials (client-id) are included -->
+    <!-- main: "https://sandbox.paypal.com/sdk/js?client-id=AeBVN6J1TEFhrD5UTcRktuITa9tQLfPNLGK5VekTGTefBDbVHTtJC2VWHQUVzj6VNfDADk6YYRrU98y0&currency=USD&intent=capture"-->
+    <script src="https://www.paypal.com/sdk/js?client-id=AQK5hZvMZlJlnPa_NqTbMl6gNoMuv-WkHxNSAwnlgu4juLpHTBm2Rhn-uba7e3_dcu3iiNtR9dsD7Xfh&currency=USD&intent=capture"></script>
+
+    <script src="js/paypaypal.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBmbDhgkziNtiv6OevyHT8ltF2tFm7Fq8c",
+          authDomain: "nitbc-374322.firebaseapp.com",
+          projectId: "nitbc-374322",
+          storageBucket: "nitbc-374322.appspot.com",
+          messagingSenderId: "431011534210",
+          appId: "1:431011534210:web:d16501882fa67e06336b9b",
+          measurementId: "G-QBEFY631PC"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>

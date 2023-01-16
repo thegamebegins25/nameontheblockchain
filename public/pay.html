@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        add favicon here:
+        
+        <link rel="shortcut icon" href="static/img/metamasklogo.png"/>
+    -->
+    <link rel="stylesheet" href="css/main.css"/>
+    <title>Choose payment method</title>
+</head>
+<body>
+    <h1 class="payheader">Choose a payment method</h1>
+    <div class="fullcenter">
+        <button onclick="paypal();" class="choose">
+            <figure>
+                <img src="static/img/paypallogo.png" height ="100" width="100" />
+                <h1>Pay with Paypal</h1>
+                <p>Takes up to 2 days<br>Centralized<br>Does not require crypto knowledge</p>
+            <figure>
+        </button>
+        
+        <button onclick="metamask();" class="choose">
+            <figure>
+                <img src="static/img/metamasklogo.png" height ="100" width="100" />
+                <h1>Pay with MetaMask</h1>
+                <p>Takes 30 seconds<br>Decentralized<br>Requires crypto knowledge</p>
+            </figure>
+        </button>
+    </div>
+    <script src="js/pay.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBmbDhgkziNtiv6OevyHT8ltF2tFm7Fq8c",
+          authDomain: "nitbc-374322.firebaseapp.com",
+          projectId: "nitbc-374322",
+          storageBucket: "nitbc-374322.appspot.com",
+          messagingSenderId: "431011534210",
+          appId: "1:431011534210:web:d16501882fa67e06336b9b",
+          measurementId: "G-QBEFY631PC"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>

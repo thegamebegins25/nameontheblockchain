@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        add favicon here:
+        
+        <link rel="shortcut icon" href="static/img/metamasklogo.png"/>
+    -->
+    <link rel="stylesheet" href="css/main.css"/>
+    <title>Your name in the Blockchain!</title>
+</head>
+<body>
+<header class="pageheader">
+    <h1 class="ht">Your name in the blockchain!</h1>
+</header>
+
+<div class="ebutton">
+    <input type="text" placeholder="Type your name here" id="nameinput" maxlength="127" size="100" class="input">
+    <button type="button" onclick="eternalize();">Eternalize</button>
+</div>
+
+            
+<script src="js/index.js"></script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBmbDhgkziNtiv6OevyHT8ltF2tFm7Fq8c",
+      authDomain: "nitbc-374322.firebaseapp.com",
+      projectId: "nitbc-374322",
+      storageBucket: "nitbc-374322.appspot.com",
+      messagingSenderId: "431011534210",
+      appId: "1:431011534210:web:d16501882fa67e06336b9b",
+      measurementId: "G-QBEFY631PC"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>
