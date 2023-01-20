@@ -15,11 +15,12 @@
     <input type="email" id="email" placeholder="Email" class="center" style="width: 50%; margin: 0 auto; display: block; margin-bottom: 20px;"/>
     <button onclick="pay();" id="emailbutton" class="center" style="width: 50%; margin: 0 auto; display: block; margin-bottom: 20px;">Pay</button>
     <p align="center">By entering your email and clicking "Pay" you consent to receiving marketing and/or transactional emails. You may unsubscribe at any time.</p>
+    <img src="static/img/loading-gif.webp" id="loading" width="3.5%" height="auto" style="display: none; margin-left: auto; margin-right: auto;"/>
     <h2 id="thx" style="display: none; text-align: center;">Thank you for buying a Name in the Blockchain! We will email you your transaction once it is complete. This will take up to 2 days.</h2>
     <div id="paypal-button-container" class="paypal"></div>
     <!-- Sample PayPal credentials (client-id) are included -->
-    <!-- main: "https://www.paypal.com/sdk/js?client-id=AQK5hZvMZlJlnPa_NqTbMl6gNoMuv-WkHxNSAwnlgu4juLpHTBm2Rhn-uba7e3_dcu3iiNtR9dsD7Xfh&currency=USD&intent=capture"-->
-    <script src="https://sandbox.paypal.com/sdk/js?client-id=AeBVN6J1TEFhrD5UTcRktuITa9tQLfPNLGK5VekTGTefBDbVHTtJC2VWHQUVzj6VNfDADk6YYRrU98y0&currency=USD&intent=capture"></script>
+    <!-- main: "https://sandbox.paypal.com/sdk/js?client-id=AeBVN6J1TEFhrD5UTcRktuITa9tQLfPNLGK5VekTGTefBDbVHTtJC2VWHQUVzj6VNfDADk6YYRrU98y0&currency=USD&intent=capture"-->
+    <script src="https://www.paypal.com/sdk/js?client-id=AQK5hZvMZlJlnPa_NqTbMl6gNoMuv-WkHxNSAwnlgu4juLpHTBm2Rhn-uba7e3_dcu3iiNtR9dsD7Xfh&currency=USD&intent=capture"></script>
 
     <script src="js/paypaypal.js"></script>
 </body>

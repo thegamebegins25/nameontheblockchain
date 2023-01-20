@@ -1,6 +1,7 @@
 const urlSearchParams = new URLSearchParams(window.location.search);
 const emailbox = document.getElementById('email');
 const emailbutton = document.getElementById('emailbutton');
+const loadinggif = document.getElementById('loading');
 const params = Object.fromEntries(urlSearchParams.entries());
 window.name = params['name'];
 
@@ -9,11 +10,11 @@ const namehtml = document.getElementById('name');
 
 let text = "Confirm your name: " + window.name;
 namehtml.textContent = text;
-
 function pay() {
     if (emailbox.value.includes("@") && emailbox.value.includes(".")) {
         emailbox.style.display = "none";
         emailbutton.style.display = "none";
+        loadinggif.style.display = "block";
         const customid = emailbox.value + "~" + Math.floor(Math.random() * 1000000000000000);
         url = "https://us-east1-nitbc-374322.cloudfunctions.net/nitbc" + "?name=" + window.name + "&email=" + emailbox.value + "&id=" + customid;
         let xmlHttpReq = new XMLHttpRequest();
@@ -85,6 +86,7 @@ function pay() {
             .catch((err) => {
                 console.error('PayPal Buttons failed to render');
         });
+        loadinggif.style.display = "none";
 
     }
 }
