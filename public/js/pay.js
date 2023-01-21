@@ -9,7 +9,7 @@ function metamask() {
       }
 
     let link = "paymetamask.html?name=" + name
-    window.open(link);
+    window.location.href = link;
 };
 
 function paypal() {
@@ -22,5 +22,5 @@ function paypal() {
       }
 
     let link = "paypaypal.html?name=" + name
-    window.open(link);
+    window.location.href = link;
 };
